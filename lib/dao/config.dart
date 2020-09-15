@@ -1,0 +1,1 @@
+const SERVER_HOST = 'http://115.159.105.128:8080';
