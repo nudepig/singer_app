@@ -946,7 +946,8 @@ class Widget_AppBar_State extends State<HomePage> {
     }else{
     return Scaffold(
         appBar: MyAppBar(
-          backgroundColor:ThemeColor.user_select_bg,
+//          backgroundColor:ThemeColor.user_select_bg,
+          backgroundColor:Color(0xFF000000),
           preferredSize: Size.fromHeight(AppSize.height(0)),
           child: CommonBackTopBar(
               title: "", onBack: () => Navigator.pop(context)
@@ -955,22 +956,36 @@ class Widget_AppBar_State extends State<HomePage> {
         body:ListView(
           children: <Widget>[
             _topHeader(),
-
+            _roomtittle(),
+            _roompic(),
+            _roomOrdertittle(),
+            _roomOrder(),
           ],
         ),
-
     );
   }
   }
 
   Widget _topHeader() {
     return Container(
-      color: ThemeColor.loignColor,
+      color: Colors.transparent,
       height: AppSize.height(620),
       child: Stack(
         //mainAxisAlignment: MainAxisAlignment.center,
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Container(
+            height: AppSize.height(620),
+//            margin: EdgeInsets.only(
+//                left: AppSize.width(730),top: AppSize.height(10)),
+            //padding: const EdgeInsets.only(top: 15),
+            child:Image.asset(
+              "images/room_pic.png",
+              width: double.infinity,
+              height: AppSize.height(620),
+              fit: BoxFit.cover,
+            ),
+          ),
           Container(
             alignment: Alignment.center,
             child:Container(
@@ -1017,51 +1032,118 @@ class Widget_AppBar_State extends State<HomePage> {
             width: 20,
             height: 20,
             margin: EdgeInsets.only(
-                top: AppSize.height(360), left: AppSize.height(520)),
+                top: AppSize.height(350), left: AppSize.height(535)),
             decoration: BoxDecoration(
-              color: ThemeColor.loignColor,
-              border: Border.all(width: 2, color: ThemeColor.loignColor),
+              color: Colors.white,
+              border: Border.all(width: 2, color: Colors.white),
               borderRadius: BorderRadius.circular(10),
             ),
             child: ClipOval(
               child: Image.asset(
-                "images/camera.png",
-                width: 18,
-                height: 18,
-                fit: BoxFit.fill,
+                "images/icon_room_edit.png",
+                width: 3,
+                height: 3,
+                fit: BoxFit.cover,
               ),
             ),
           ),
 
-
-
-
           Container(
             height: AppSize.height(60),
             width: double.infinity,
+            alignment: Alignment.center,
             margin: EdgeInsets.only(
-                top: AppSize.height(460)),
+                top: AppSize.height(425)),
             //padding: const EdgeInsets.only(top: 15),
-            child:Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(
-                      left: AppSize.width(240)),
-//                  width: AppSize.width(300),
-                  child:Text(
+            child:Text(
                     '星星之火',
-                    textAlign : TextAlign.right,
+//                    textAlign : TextAlign.right,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: AppSize.sp(51),
                         color: Colors.white,fontWeight: FontWeight.w600),
                   ),
-                ),
-              ],
             ),
-          ),
           Container(
+              margin: EdgeInsets.only(
+                  top: AppSize.height(535),),
+            child:Stack(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppSize.width(50)),
+                    //padding: const EdgeInsets.only(top: 15),
+                    child:Text(
+                      '接单数：999',
+//                    textAlign : TextAlign.right,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: AppSize.sp(36),
+                          color: Colors.white,fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppSize.width(320)),
+                    //padding: const EdgeInsets.only(top: 15),
+                    child:Text(
+                      '|',
+//                    textAlign : TextAlign.right,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: AppSize.sp(36),
+                          color: Colors.white,fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppSize.width(410)),
+                    //padding: const EdgeInsets.only(top: 15),
+                    child:Text(
+                      '人数：26位',
+//                    textAlign : TextAlign.right,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: AppSize.sp(36),
+                          color: Colors.white,fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppSize.width(660)),
+                    //padding: const EdgeInsets.only(top: 15),
+                    child:Text(
+                      '|',
+//                    textAlign : TextAlign.right,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: AppSize.sp(36),
+                          color: Colors.white,fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppSize.width(730),top: AppSize.height(10)),
+                    //padding: const EdgeInsets.only(top: 15),
+                    child:Image.asset(
+                      "images/icon_map_room.png",
+                      width: 11,
+                      height: 11,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppSize.width(770)),
+                    //padding: const EdgeInsets.only(top: 15),
+                    child:Text(
+                      '武汉市：1234km',
+//                    textAlign : TextAlign.right,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: AppSize.sp(36),
+                          color: Colors.white,fontWeight: FontWeight.w600),
+                    ),
+                  ),
+
+
+                ]
+            )
+
 
           )
 
@@ -1125,6 +1207,1010 @@ class Widget_AppBar_State extends State<HomePage> {
       });
     }
     DialogUtil.buildToast(entity.msgModel.msg);
+  }
+
+  Widget _roomtittle() {
+    return Container(
+      height: AppSize.height(100),
+      child: Stack(
+          children: <Widget>[
+            Container(
+              height: AppSize.height(50),
+              color: Color(0xFF494949),
+            ),
+            Container(
+              height: AppSize.height(100),
+              //color: Colors.white,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(width: 1, color: Colors.white),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            Container(
+              height: AppSize.height(80),
+              width: double.infinity,
+              color: Colors.white,
+              margin: EdgeInsets.only(
+                  top: AppSize.height(50)),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: AppSize.height(30),left: AppSize.width(35)),
+              child: Text(
+                '#',
+                style: TextStyle(fontSize: AppSize.sp(43),
+                    color: ThemeColor.loignColor,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: AppSize.height(30),left: AppSize.width(65)),
+              child: Text(
+                '房间人员',
+                style: TextStyle(fontSize: AppSize.sp(43),
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+
+          ]
+      ),
+    );
+  }
+
+  ///房间图片
+  Widget _roompic() {
+    return Container(
+      height: AppSize.height(348),
+      color: Colors.white,
+      margin: EdgeInsets.only(
+          top: AppSize.height(0)),
+      child: ListView(
+        //设置水平方向排列
+        scrollDirection: Axis.horizontal,
+        //添加子元素
+        children: <Widget>[
+          Container(
+            width: AppSize.width(300),
+            height: AppSize.height(308),
+            padding: EdgeInsets.only(
+                left: AppSize.width(50),top: AppSize.height(30)),
+            color: Colors.white,
+            child:Stack(
+                children: <Widget>[
+
+                InkWell(
+                  onTap: () {
+                    print('44444444444444444444');
+                },
+                  child:Container(
+                    height: AppSize.height(240),
+                    width: AppSize.width(240),
+
+                    decoration: BoxDecoration(
+                      //color: Colors.white,
+                      image: DecorationImage(
+                        //image: NetworkImage('http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg'),
+                        image: ExactAssetImage('images/test.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      color: Colors.white,
+                      border: Border.all(width: 1, color: Colors.white),
+                      borderRadius: BorderRadius.circular(5),
+
+                    ),
+
+
+                    child:Container(
+                      //color: Colors.grey,
+                      width: 10,
+                      height: 10,
+                      margin: EdgeInsets.only(
+                          left: AppSize.width(190),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(195)),
+    //                  padding: EdgeInsets.only(
+    //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFE8E8E8),
+                        border: Border.all(width: 5, color: Color(0xFFE8E8E8)),
+                        borderRadius: BorderRadius.circular(0)),
+    //                  child:FlatButton(
+                      child:InkWell(
+                        onTap: () {
+                          print('333333333333333');
+                        },
+
+                        child:Container(
+                          width: 6,
+                          height: 6,
+    //                      margin: EdgeInsets.only(
+    //                          left: AppSize.width(2),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(2)),
+    //                  padding: EdgeInsets.only(
+    //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                          decoration: BoxDecoration(
+                              color: ThemeColor.loignColor,
+                              border: Border.all(width: 1, color: ThemeColor.loignColor),
+                              borderRadius: BorderRadius.circular(6)),
+                        ),
+                    ),
+                  ),
+                ),
+              ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: AppSize.height(250),left: AppSize.width(0)),
+                    child: Text(
+                      '叶洛洛(经纪人)',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: AppSize.sp(33),
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+            ],
+            ),
+          ),
+          Container(
+            width: AppSize.width(300),
+            height: AppSize.height(308),
+            padding: EdgeInsets.only(
+                left: AppSize.width(50),top: AppSize.height(30)),
+            color: Colors.white,
+            child:Stack(
+              children: <Widget>[
+
+                InkWell(
+                  onTap: () {
+                    print('44444444444444444444');
+                  },
+                  child:Container(
+                    height: AppSize.height(240),
+                    width: AppSize.width(240),
+
+                    decoration: BoxDecoration(
+                      //color: Colors.white,
+                      image: DecorationImage(
+                        //image: NetworkImage('http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg'),
+                        image: ExactAssetImage('images/test.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      color: Colors.white,
+                      border: Border.all(width: 1, color: Colors.white),
+                      borderRadius: BorderRadius.circular(5),
+
+                    ),
+
+
+                    child:Container(
+                      //color: Colors.grey,
+                      width: 10,
+                      height: 10,
+                      margin: EdgeInsets.only(
+                          left: AppSize.width(190),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(195)),
+                      //                  padding: EdgeInsets.only(
+                      //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                      decoration: BoxDecoration(
+                          color: Color(0xFFE8E8E8),
+                          border: Border.all(width: 5, color: Color(0xFFE8E8E8)),
+                          borderRadius: BorderRadius.circular(0)),
+                      //                  child:FlatButton(
+                      child:InkWell(
+                        onTap: () {
+                          print('333333333333333');
+                        },
+
+                        child:Container(
+                          width: 6,
+                          height: 6,
+                          //                      margin: EdgeInsets.only(
+                          //                          left: AppSize.width(2),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(2)),
+                          //                  padding: EdgeInsets.only(
+                          //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                          decoration: BoxDecoration(
+                              color: ThemeColor.loignColor,
+                              border: Border.all(width: 1, color: ThemeColor.loignColor),
+                              borderRadius: BorderRadius.circular(6)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: AppSize.height(250),left: AppSize.width(0)),
+                  child: Text(
+                    '叶洛洛(经纪人)',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: AppSize.sp(33),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: AppSize.width(300),
+            height: AppSize.height(308),
+            padding: EdgeInsets.only(
+                left: AppSize.width(50),top: AppSize.height(30)),
+            color: Colors.white,
+            child:Stack(
+              children: <Widget>[
+
+                InkWell(
+                  onTap: () {
+                    print('44444444444444444444');
+                  },
+                  child:Container(
+                    height: AppSize.height(240),
+                    width: AppSize.width(240),
+
+                    decoration: BoxDecoration(
+                      //color: Colors.white,
+                      image: DecorationImage(
+                        //image: NetworkImage('http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg'),
+                        image: ExactAssetImage('images/test.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      color: Colors.white,
+                      border: Border.all(width: 1, color: Colors.white),
+                      borderRadius: BorderRadius.circular(5),
+
+                    ),
+
+
+                    child:Container(
+                      //color: Colors.grey,
+                      width: 10,
+                      height: 10,
+                      margin: EdgeInsets.only(
+                          left: AppSize.width(190),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(195)),
+                      //                  padding: EdgeInsets.only(
+                      //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                      decoration: BoxDecoration(
+                          color: Color(0xFFE8E8E8),
+                          border: Border.all(width: 5, color: Color(0xFFE8E8E8)),
+                          borderRadius: BorderRadius.circular(0)),
+                      //                  child:FlatButton(
+                      child:InkWell(
+                        onTap: () {
+                          print('333333333333333');
+                        },
+
+                        child:Container(
+                          width: 6,
+                          height: 6,
+                          //                      margin: EdgeInsets.only(
+                          //                          left: AppSize.width(2),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(2)),
+                          //                  padding: EdgeInsets.only(
+                          //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                          decoration: BoxDecoration(
+                              color: ThemeColor.loignColor,
+                              border: Border.all(width: 1, color: ThemeColor.loignColor),
+                              borderRadius: BorderRadius.circular(6)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: AppSize.height(250),left: AppSize.width(0)),
+                  child: Text(
+                    '叶洛洛(经纪人)',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: AppSize.sp(33),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: AppSize.width(300),
+            height: AppSize.height(308),
+            padding: EdgeInsets.only(
+                left: AppSize.width(50),top: AppSize.height(30)),
+            color: Colors.white,
+            child:Stack(
+              children: <Widget>[
+
+                InkWell(
+                  onTap: () {
+                    print('44444444444444444444');
+                  },
+                  child:Container(
+                    height: AppSize.height(240),
+                    width: AppSize.width(240),
+
+                    decoration: BoxDecoration(
+                      //color: Colors.white,
+                      image: DecorationImage(
+                        //image: NetworkImage('http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg'),
+                        image: ExactAssetImage('images/test.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      color: Colors.white,
+                      border: Border.all(width: 1, color: Colors.white),
+                      borderRadius: BorderRadius.circular(5),
+
+                    ),
+
+
+                    child:Container(
+                      //color: Colors.grey,
+                      width: 10,
+                      height: 10,
+                      margin: EdgeInsets.only(
+                          left: AppSize.width(190),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(195)),
+                      //                  padding: EdgeInsets.only(
+                      //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                      decoration: BoxDecoration(
+                          color: Color(0xFFE8E8E8),
+                          border: Border.all(width: 5, color: Color(0xFFE8E8E8)),
+                          borderRadius: BorderRadius.circular(0)),
+                      //                  child:FlatButton(
+                      child:InkWell(
+                        onTap: () {
+                          print('333333333333333');
+                        },
+
+                        child:Container(
+                          width: 6,
+                          height: 6,
+                          //                      margin: EdgeInsets.only(
+                          //                          left: AppSize.width(2),right: AppSize.width(0),top: AppSize.height(0),bottom: AppSize.height(2)),
+                          //                  padding: EdgeInsets.only(
+                          //                      left: AppSize.width(5),right: AppSize.width(5),top: AppSize.height(5),bottom: AppSize.height(5)),
+                          decoration: BoxDecoration(
+                              color: ThemeColor.loignColor,
+                              border: Border.all(width: 1, color: ThemeColor.loignColor),
+                              borderRadius: BorderRadius.circular(6)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: AppSize.height(250),left: AppSize.width(0)),
+                  child: Text(
+                    '叶洛洛(经纪人)',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: AppSize.sp(33),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _roomOrdertittle() {
+    return Container(
+      height: AppSize.height(80),
+      child: Stack(
+          children: <Widget>[
+            Container(
+              height: AppSize.height(80),
+              width: double.infinity,
+              color: Colors.white,
+              margin: EdgeInsets.only(
+                  top: AppSize.height(0)),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: AppSize.height(5),left: AppSize.width(35)),
+              child: Text(
+                '#',
+                style: TextStyle(fontSize: AppSize.sp(43),
+                    color: ThemeColor.loignColor,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: AppSize.height(5),left: AppSize.width(65)),
+              child: Text(
+                '订单情况',
+                style: TextStyle(fontSize: AppSize.sp(43),
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+
+          ]
+      ),
+    );
+  }
+
+  Widget _roomOrder() {
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+              //color: Colors.white,
+              height: AppSize.height(560),
+              width: double.infinity,
+              margin: EdgeInsets.only(
+                  top: AppSize.height(40),left: AppSize.width(40), right: AppSize.width(40)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(width: 1, color: Colors.white),
+                borderRadius: BorderRadius.circular(3),
+                //        boxShadow: [BoxShadow(color: Colors.black12,
+                //            //offset: Offset(5.0, 5.0),
+                //            blurRadius: 1, spreadRadius: 1)],
+              ),
+
+              child: Column(
+                children: <Widget>[
+
+                  Container(
+                    height: AppSize.height(100),
+                    margin: EdgeInsets.only(
+                        top: AppSize.height(20),left: AppSize.width(10), right: AppSize.width(20)),
+                    decoration: BoxDecoration(
+                        border:Border(bottom:BorderSide(width: 1,color: Color(0xffe5e5e5)) )
+                    ),
+                    child:Stack(
+                      children: <Widget>[
+                        Container(
+                          width: AppSize.width(100),
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(25),left: AppSize.width(0)),
+                          child: Text(
+                            '${AppConfig.nickName}',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: AppSize.sp(40),
+                                color: Color(0xFF333333),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(30),left: AppSize.width(120)),
+                          child: Text(
+                            orderTime,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFF333333),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(30),left: AppSize.width(800)),
+                          child: Text(
+                            orderEvaluate,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFF666666),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    height: AppSize.height(260),
+                    margin: EdgeInsets.only(
+                        top: AppSize.height(20),left: AppSize.width(20), right: AppSize.width(20)),
+                    decoration: BoxDecoration(
+                        border:Border(bottom:BorderSide(width: 1,color: Color(0xffe5e5e5)) )
+                    ),
+                    child:Stack(
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: AppSize.width(710),top: AppSize.height(20)),
+                          //            alignment: Alignment.center,
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(width: 1, color: ThemeColor.loignColor),
+                            borderRadius: BorderRadius.circular(36),
+                          ),
+                          child: ClipOval(
+                            child: _buildIsHasHead(),
+                          ),
+                        ),
+
+                        Container(
+                          width: AppSize.width(450),
+                          margin: EdgeInsets.only(left: AppSize.width(270),top: AppSize.height(10)),
+
+                          child:Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '手  机  号：  ' + '${AppConfig.mobile}',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines:1,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '时  间  段：  ' + '$orderTimeSlot',
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '金        额：  ' + '$orderMoney',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines:1,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '到账状态：  ' + '$orderStatus',
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign:TextAlign.left,
+                                  maxLines:1,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+
+                              ]
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Stack(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(left: AppSize.width(40),top: AppSize.height(55)),
+                          alignment: Alignment.centerLeft,
+                          child:Text(
+                            '评价后立即到账，未评价三天后到账',
+                            overflow: TextOverflow.ellipsis,
+                            textAlign:TextAlign.left,
+                            maxLines:1,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFFFFB017),fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        InkWell(
+                          onTap: () {
+
+                          },
+
+                          child:Container(
+                            width: AppSize.width(196),
+                            height: AppSize.height(78),
+                            padding: EdgeInsets.only(
+                                top: AppSize.height(15)),
+                            margin: EdgeInsets.only(
+                                left: AppSize.width(760),top: AppSize.height(40)),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(width: 1, color: ThemeColor.loignColor),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              '查看',
+                              textAlign : TextAlign.center,
+                              style: TextStyle(fontSize: AppSize.sp(35),
+                                  color: ThemeColor.loignColor),
+                            ),
+                          ),
+                        ),
+
+
+                      ]
+                  )
+
+
+                ],
+              ),
+            ),
+            Container(
+              //color: Colors.white,
+              height: AppSize.height(560),
+              width: double.infinity,
+              margin: EdgeInsets.only(
+                  top: AppSize.height(40),left: AppSize.width(40), right: AppSize.width(40)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(width: 1, color: Colors.white),
+                borderRadius: BorderRadius.circular(3),
+                //        boxShadow: [BoxShadow(color: Colors.black12,
+                //            //offset: Offset(5.0, 5.0),
+                //            blurRadius: 1, spreadRadius: 1)],
+              ),
+
+              child: Column(
+                children: <Widget>[
+
+                  Container(
+                    height: AppSize.height(100),
+                    margin: EdgeInsets.only(
+                        top: AppSize.height(20),left: AppSize.width(10), right: AppSize.width(20)),
+                    decoration: BoxDecoration(
+                        border:Border(bottom:BorderSide(width: 1,color: Color(0xffe5e5e5)) )
+                    ),
+                    child:Stack(
+                      children: <Widget>[
+                        Container(
+                          width: AppSize.width(100),
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(25),left: AppSize.width(0)),
+                          child: Text(
+                            '${AppConfig.nickName}',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: AppSize.sp(40),
+                                color: Color(0xFF333333),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(30),left: AppSize.width(120)),
+                          child: Text(
+                            orderTime,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFF333333),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(30),left: AppSize.width(800)),
+                          child: Text(
+                            orderEvaluate,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFF666666),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    height: AppSize.height(260),
+                    margin: EdgeInsets.only(
+                        top: AppSize.height(20),left: AppSize.width(20), right: AppSize.width(20)),
+                    decoration: BoxDecoration(
+                        border:Border(bottom:BorderSide(width: 1,color: Color(0xffe5e5e5)) )
+                    ),
+                    child:Stack(
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: AppSize.width(710),top: AppSize.height(20)),
+                          //            alignment: Alignment.center,
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(width: 1, color: ThemeColor.loignColor),
+                            borderRadius: BorderRadius.circular(36),
+                          ),
+                          child: ClipOval(
+                            child: _buildIsHasHead(),
+                          ),
+                        ),
+
+                        Container(
+                          width: AppSize.width(450),
+                          margin: EdgeInsets.only(left: AppSize.width(270),top: AppSize.height(10)),
+
+                          child:Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '手  机  号：  ' + '${AppConfig.mobile}',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines:1,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '时  间  段：  ' + '$orderTimeSlot',
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '金        额：  ' + '$orderMoney',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines:1,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '到账状态：  ' + '$orderStatus',
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign:TextAlign.left,
+                                  maxLines:1,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+
+                              ]
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Stack(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(left: AppSize.width(40),top: AppSize.height(55)),
+                          alignment: Alignment.centerLeft,
+                          child:Text(
+                            '评价后立即到账，未评价三天后到账',
+                            overflow: TextOverflow.ellipsis,
+                            textAlign:TextAlign.left,
+                            maxLines:1,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFFFFB017),fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        InkWell(
+                          onTap: () {
+
+                          },
+
+                          child:Container(
+                            width: AppSize.width(196),
+                            height: AppSize.height(78),
+                            padding: EdgeInsets.only(
+                                top: AppSize.height(15)),
+                            margin: EdgeInsets.only(
+                                left: AppSize.width(760),top: AppSize.height(40)),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(width: 1, color: ThemeColor.loignColor),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              '查看',
+                              textAlign : TextAlign.center,
+                              style: TextStyle(fontSize: AppSize.sp(35),
+                                  color: ThemeColor.loignColor),
+                            ),
+                          ),
+                        ),
+
+
+                      ]
+                  )
+
+
+                ],
+              ),
+            ),
+            Container(
+              //color: Colors.white,
+              height: AppSize.height(560),
+              width: double.infinity,
+              margin: EdgeInsets.only(
+                  top: AppSize.height(40),left: AppSize.width(40), right: AppSize.width(40)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(width: 1, color: Colors.white),
+                borderRadius: BorderRadius.circular(3),
+                //        boxShadow: [BoxShadow(color: Colors.black12,
+                //            //offset: Offset(5.0, 5.0),
+                //            blurRadius: 1, spreadRadius: 1)],
+              ),
+
+              child: Column(
+                children: <Widget>[
+
+                  Container(
+                    height: AppSize.height(100),
+                    margin: EdgeInsets.only(
+                        top: AppSize.height(20),left: AppSize.width(10), right: AppSize.width(20)),
+                    decoration: BoxDecoration(
+                        border:Border(bottom:BorderSide(width: 1,color: Color(0xffe5e5e5)) )
+                    ),
+                    child:Stack(
+                      children: <Widget>[
+                        Container(
+                          width: AppSize.width(100),
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(25),left: AppSize.width(0)),
+                          child: Text(
+                            '${AppConfig.nickName}',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: AppSize.sp(40),
+                                color: Color(0xFF333333),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(30),left: AppSize.width(120)),
+                          child: Text(
+                            orderTime,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFF333333),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: AppSize.height(30),left: AppSize.width(800)),
+                          child: Text(
+                            orderEvaluate,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFF666666),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    height: AppSize.height(260),
+                    margin: EdgeInsets.only(
+                        top: AppSize.height(20),left: AppSize.width(20), right: AppSize.width(20)),
+                    decoration: BoxDecoration(
+                        border:Border(bottom:BorderSide(width: 1,color: Color(0xffe5e5e5)) )
+                    ),
+                    child:Stack(
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: AppSize.width(710),top: AppSize.height(20)),
+                          //            alignment: Alignment.center,
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(width: 1, color: ThemeColor.loignColor),
+                            borderRadius: BorderRadius.circular(36),
+                          ),
+                          child: ClipOval(
+                            child: _buildIsHasHead(),
+                          ),
+                        ),
+
+                        Container(
+                          width: AppSize.width(450),
+                          margin: EdgeInsets.only(left: AppSize.width(270),top: AppSize.height(10)),
+
+                          child:Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '手  机  号：  ' + '${AppConfig.mobile}',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines:1,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '时  间  段：  ' + '$orderTimeSlot',
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '金        额：  ' + '$orderMoney',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines:1,
+                                  textAlign:TextAlign.left,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  '到账状态：  ' + '$orderStatus',
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign:TextAlign.left,
+                                  maxLines:1,
+                                  style: TextStyle(fontSize: AppSize.sp(35),
+                                      color: Color(0xFF333333),fontWeight: FontWeight.w500),
+                                ),
+
+                              ]
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Stack(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(left: AppSize.width(40),top: AppSize.height(55)),
+                          alignment: Alignment.centerLeft,
+                          child:Text(
+                            '评价后立即到账，未评价三天后到账',
+                            overflow: TextOverflow.ellipsis,
+                            textAlign:TextAlign.left,
+                            maxLines:1,
+                            style: TextStyle(fontSize: AppSize.sp(35),
+                                color: Color(0xFFFFB017),fontWeight: FontWeight.w500),
+                          ),
+                        ),
+
+                        InkWell(
+                          onTap: () {
+
+                          },
+
+                          child:Container(
+                            width: AppSize.width(196),
+                            height: AppSize.height(78),
+                            padding: EdgeInsets.only(
+                                top: AppSize.height(15)),
+                            margin: EdgeInsets.only(
+                                left: AppSize.width(760),top: AppSize.height(40)),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(width: 1, color: ThemeColor.loignColor),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              '查看',
+                              textAlign : TextAlign.center,
+                              style: TextStyle(fontSize: AppSize.sp(35),
+                                  color: ThemeColor.loignColor),
+                            ),
+                          ),
+                        ),
+
+
+                      ]
+                  )
+
+
+                ],
+              ),
+            ),
+
+          ],
+        ),
+      ),
+    );
   }
 
 
