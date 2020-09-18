@@ -119,3 +119,6 @@ flutter:
     - family:  MyIcons4
       fonts:
         - asset: fonts/iconpay.ttf
+    - family:  SingerIcons
+      fonts:
+        - asset: fonts/iconsingerfont.ttf

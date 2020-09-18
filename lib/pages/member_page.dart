@@ -17,6 +17,7 @@ import 'package:singer_app/models/file_upload_entity.dart';
 import 'package:singer_app/dao/config.dart';
 import 'package:singer_app/utils/date_select.dart';
 import 'package:singer_app/view/flutter_iconfont.dart';
+import 'package:singer_app/view/my_icons_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MemberPage extends StatefulWidget {
@@ -242,7 +243,7 @@ class _MemberPage extends State<MemberPage> {
                   //obscureText: true,
                   textAlign : TextAlign.center,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: Icon(MyIcons.singer_info,size: AppSize.sp(49),),
                     //hintText: "                                                                       请填写昵称",
                     hintStyle: TextStyle(color: Colors.grey, fontSize: AppSize.sp(40)),
                     contentPadding: EdgeInsets.symmetric(
@@ -323,7 +324,7 @@ class _MemberPage extends State<MemberPage> {
                 //obscureText: true,
                 textAlign : TextAlign.center,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.monetization_on),
+                  prefixIcon: Icon(MyIcons.singer_balance,size: AppSize.sp(48),),
                   //hintText: "                                                                       请填写昵称",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: AppSize.sp(40)),
                   contentPadding: EdgeInsets.symmetric(
@@ -413,7 +414,7 @@ class _MemberPage extends State<MemberPage> {
                 //obscureText: true,
                 textAlign : TextAlign.center,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.featured_play_list),
+                  prefixIcon: Icon(MyIcons.singer_account,size: AppSize.sp(51),),
                   //hintText: "                                                                       请填写昵称",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: AppSize.sp(40)),
                   contentPadding: EdgeInsets.symmetric(
@@ -501,7 +502,7 @@ class _MemberPage extends State<MemberPage> {
                 //obscureText: true,
                 textAlign : TextAlign.center,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.border_color),
+                  prefixIcon: Icon(MyIcons.singer_order,size: AppSize.sp(46),),
                   //hintText: "                                                                       请填写昵称",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: AppSize.sp(40)),
                   contentPadding: EdgeInsets.symmetric(
@@ -580,13 +581,19 @@ class _MemberPage extends State<MemberPage> {
       height: AppSize.height(150),
       child: Stack(
           children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                border:Border(bottom:BorderSide(width: 1,color: Color(0xFFF1F1F1)) )
+            ),
+          ),
+
             Container(
+              margin: EdgeInsets.only(
+                  top: AppSize.height(52),left: AppSize.width(42)),
               color: Colors.white,
-              child:Image.asset(
-              'images/icon_delete.png',
-              width: AppSize.width(25),
-              height: AppSize.height(45),
-              fit: BoxFit.cover,
+              child:Icon(
+                MyIcons.singer_qq,
+                size: AppSize.sp(45),
             ),
             ),
             Container(
@@ -638,7 +645,7 @@ class _MemberPage extends State<MemberPage> {
                 //obscureText: true,
                 textAlign : TextAlign.center,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.power_settings_new),
+                  prefixIcon: Icon(Icons.power_settings_new,size: AppSize.sp(55),),
                   //hintText: "                                                                       请填写昵称",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: AppSize.sp(40)),
                   border: InputBorder.none,

@@ -9,3 +9,11 @@ class IconDataEx extends IconData {
     fontFamily: 'IconFont',
   );
 }
+
+class SingerDataEx extends IconData {
+  const SingerDataEx(int codePoint)
+      : super(
+    codePoint,
+    fontFamily: 'SingerIcons',
+  );
+}

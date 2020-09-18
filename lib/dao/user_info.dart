@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:singer_app/models/entity_factory.dart';
 import 'package:singer_app/models/login_entity.dart';
-import 'package:singer_app/view/my_icons.dart.dart';
+import 'package:singer_app/view/my_icons_dart.dart';
 import 'dart:async';
 import 'dart:io';
 import '../common.dart';

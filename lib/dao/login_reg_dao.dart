@@ -16,7 +16,7 @@ class LoginRegDao{
       response.data={
     "msg": "操作成功",
     "code": 200,
-    "token": "eyJhbGciOiJIUzUxMiJ9.eyJtb2JpbGVfbG9naW5fdXNlcl9rZXkiOiIxOTkyMDAwMDM0MSJ9.jrBKBZ-553IlB8aGCZ0uUAgSzm_GXIfJ4BUIaHWF5CeGkSMizeNMDEclwJsQO2lPloerzpH-m1UAieBlNSlAEw"
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJtb2JpbGVfbG9naW5fdXNlcl9rZXkiOiIxODM3MTQ1MDk3MCJ9.bLffzU6L8cy_Dq56olTU3Ss1qHdhjgUAkNkbYUJnu9R_Ef67UhH9nz5OzDmZz8qnU1GOmK8M00yRUgjyd5GO2w"
     };
       print(response.data);
       if(response.data['code'] == 200){

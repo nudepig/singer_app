@@ -18,3 +18,10 @@ class IconFonts{
   static const IconData arrow_right = const IconDataEx(0xe620);
   static const IconData eye_close = const IconDataEx(0xe50e);
 }
+
+
+class SingerFonts{
+  SingerFonts._();
+
+  static const IconData singer_account = const SingerDataEx(0xe60b);
+}
